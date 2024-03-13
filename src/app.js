@@ -11,6 +11,20 @@ const server = http.createServer((req, res) => {
       const obj = JSON.parse(chunks)
       const value1 = obj.num1;
       const value2 = obj.num2;
+      if(value1<=0||value2<0)
+      {
+        res.writeHead(404,{"Content-Type":"plain/text"});
+        res.end("The operation cannot be performed");
+      }
+      else if(!value1||!value2){
+        res.writeHead(400,{"Content-Type":"plain/text"});
+        res.end("Bad Request");
+      }
+      else{
+        res.writeHead(200,{"Content-Type":"plain/text"});
+        res.end(`The result is ${value1**value2}`);
+      }
+
 
       // Write code here to calculate power of a number
       
