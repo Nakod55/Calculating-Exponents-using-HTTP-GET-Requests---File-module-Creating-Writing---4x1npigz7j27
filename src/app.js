@@ -16,13 +16,13 @@ const server = http.createServer((req, res) => {
         res.writeHead(404,{"Content-Type":"plain/text"});
         res.end("The operation cannot be performed");
       }
-      else if(!value1||!value2){
-        res.writeHead(400,{"Content-Type":"plain/text"});
-        res.end("Bad Request");
-      }
-      else{
+      else if(!isNaN(value1)&&!isNaN(value2)){
         res.writeHead(200,{"Content-Type":"plain/text"});
         res.end(`The result is ${value1**value2}`);
+      }
+      else{
+        res.writeHead(400,{"Content-Type":"plain/text"});
+        res.end("Bad Request");
       }
 
 
